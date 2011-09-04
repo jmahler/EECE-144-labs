@@ -19,10 +19,10 @@
 % Imagine writing a document in Word except without
 % having to worry about the tedious things such as line breaks,
 % indentation, table of contents, appendices, font styles,
-% heading sizes, citations/references, page numbers.
+% heading sizes, citations/references and page numbers.
 % LaTeX lets you focus on the content without
-% worrying about the tedious details.  It is also excellent for
-% producing mathematical formulas.
+% worrying about the tedious details.  It is also great at
+% producing publication quality mathematical formulas.
 % 
 % If you are collaborating with someone else you can simply edit
 % the sections and paragraphs in this file as needed.
@@ -72,7 +72,7 @@
 \vfill
 \centerline{\LARGE Lab 1: Lab Introduction}
 \vspace{0.3in}
-\centerline{Jeremiah M. Mahler and Second Partner}
+\centerline{First Partner and Second Partner}
 \centerline{Logic Design Fundamentals (EECE 144), CSU Chico}
 %\centerline{\today}
 \centerline{September 8, 2011}
@@ -83,7 +83,7 @@
 \begin{center}
 \begin{tabular}{l l}
 \uline{\hspace{2.5in}} & \uline{\hspace{2.5in}} \\
-Signature (Jeremiah Mahler) & Signature (Second Partner) \\
+Signature (First Partner) & Signature (Second Partner) \\
 & \\
 & \\
 \uline{\hspace{2.5in}} & \uline{\hspace{2.5in}} \\
@@ -114,6 +114,7 @@ this procedure to confirm your results.
 \section{Observations}
 
 Describe any notable behaviour that was observed.
+\nocite{LOGISIM}
 
 \section{Analysis}
 
@@ -130,10 +131,15 @@ Was it successful?
 % References (if needed)
 % If you don't have any references
 % comment out this section.
-%\pagebreak
+\pagebreak
+% for References in table of contents
+\renewcommand*{\refname}{}
+\section{References}
+% choose one of the styles
 %\bibliographystyle{plain}
 %\bibliographystyle{mslapa}
-%\bibliography{main}  % main.bib
+\bibliographystyle{ieeetr}
+\bibliography{references}  % references.bib
 
 % Appendix (if needed)
 
