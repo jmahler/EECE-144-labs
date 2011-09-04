@@ -56,8 +56,6 @@
 
 %\usepackage{mslapa}
 \usepackage{hyperref}
-%\usepackage{fancyhdr}
-%\usepackage{lastpage}  % Page n of m, \pageref{LastPage}
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{ulem}       % \uline
@@ -70,7 +68,7 @@
 % {{{ Cover Page
 
 \null
-\thispagestyle{empty}
+\thispagestyle{empty} % no page number on this page
 \vfill
 \centerline{\LARGE Lab 1: Lab Introduction}
 \vspace{0.3in}
@@ -96,6 +94,8 @@ Date & Date \\
 \vfill  % fill up the rest of the page with spaces, shifts content up
 \pagebreak
 % }}}
+
+\thispagestyle{plain}  % turn back on page numbers
 
 % {{{ Table of Contents
 \tableofcontents
