@@ -1,0 +1,142 @@
+
+%
+% # INTRODUCTION:
+%
+% This is a template (skeleton) file in LaTeX used for lab write-ups.
+%
+% Specifically this was used for the class Logic Design Fundamentals (EECE 144)
+% taught by Kurtis Kredo [http://www.ecst.csuchico.edu/~kkredo/]
+% during the Fall 2011 semester at CSU Chico [www.csuchico.edu].
+% 
+% ## LaTeX
+%
+% This file is written for LaTeX [http://www.latex-project.org/]
+% which is used to process this file in to a completely formatted
+% document.
+%
+% If you are unfamiliar with LaTeX it can seem daunting at first
+% (as with anything new) but there are many benefits.
+% Imagine writing a document in Word except without
+% having to worry about the tedious things such as line breaks,
+% indentation, table of contents, appendices, font styles,
+% heading sizes, citations/references, page numbers.
+% LaTeX lets you focus on the content without
+% worrying about the tedious details.  It is also excellent for
+% producing mathematical formulas.
+% 
+% If you are collaborating with someone else you can simply edit
+% the sections and paragraphs in this file as needed.
+%
+% To process this file use a command such as 'rubber'.
+%
+%   bash$ rubber skel.tex
+%   (output to skel.dvi)
+%   bash% rubber --pdf skel.tex
+%   (output to skel.pdf)
+%
+% # AUTHORS (of this template):
+%
+%   Jeremiah Mahler <jmmahler@gmail.com>
+%   https://www.google.com/profiles/jmmahler#about 
+%
+% # COPYRIGHT:
+%
+%   Copyright (C)  2011 Jeremiah Mahler <jmmahler@gmail.com>.
+%   Permission is granted to copy, distribute and/or modify this document
+%   under the terms of the GNU Free Documentation License, Version 1.3
+%   or any later version published by the Free Software Foundation;
+%   with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+%   A copy of the license is included in the file "fdl-1.3.txt".
+%
+
+\documentclass[12pt]{article}
+%\documentclass[10pt]{article}
+
+%\usepackage{mslapa}
+\usepackage{hyperref}
+%\usepackage{fancyhdr}
+%\usepackage{lastpage}  % Page n of m, \pageref{LastPage}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{ulem}       % \uline
+\usepackage{vmargin}    % \setpapersize
+
+\setpapersize{USletter}
+
+\begin{document}
+
+% {{{ Cover Page
+
+\null
+\thispagestyle{empty}
+\vfill
+\centerline{\LARGE Lab 1: Lab Introduction}
+\vspace{0.3in}
+\centerline{Jeremiah M. Mahler and Second Partner}
+\centerline{Logic Design Fundamentals (EECE 144), CSU Chico}
+%\centerline{\today}
+\centerline{September 8, 2011}
+\centerline{Kurtis Kredo, Instructor}
+\vspace{5in}
+
+% signature area
+\begin{center}
+\begin{tabular}{l l}
+\uline{\hspace{2.5in}} & \uline{\hspace{2.5in}} \\
+Signature (Jeremiah Mahler) & Signature (Second Partner) \\
+& \\
+& \\
+\uline{\hspace{2.5in}} & \uline{\hspace{2.5in}} \\
+Date & Date \\
+\end{tabular}
+\end{center}
+
+\vfill  % fill up the rest of the page with spaces, shifts content up
+\pagebreak
+% }}}
+
+% {{{ Table of Contents
+\tableofcontents
+
+\pagebreak
+% }}}
+
+\section{Objectives}
+
+What is the goal of this lab?
+
+\section{Procedure}
+
+What was procedure you used in this lab?
+Describe it in detail so that someone else you repeat
+this procedure to confirm your results.
+
+\section{Observations}
+
+Describe any notable behaviour that was observed.
+
+\section{Analysis}
+
+Analyze the observations.
+
+\section{Conclusion}
+
+Describe your conclusions from this lab.
+Was it successful?
+
+% flush all the figures
+\clearpage
+
+% References (if needed)
+% If you don't have any references
+% comment out this section.
+%\pagebreak
+%\bibliographystyle{plain}
+%\bibliographystyle{mslapa}
+%\bibliography{main}  % main.bib
+
+% Appendix (if needed)
+
+\end{document}
+
+% vim:foldmethod=marker
