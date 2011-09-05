@@ -56,82 +56,105 @@
 \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{graphicx}
-\usepackage{ulem}       % \uline
-\usepackage{vmargin}    % \setpapersize
+\usepackage{ulem}
+\usepackage{vmargin}
+\usepackage{tabularx}
+\usepackage{sectsty}
+\usepackage{pbox}
+\usepackage{bigstrut}
+\usepackage{enumerate}
 
 \setpapersize{USletter}
+\sectionfont{\normalsize}
 
 \begin{document}
 
 % {{{ Cover Page
 
-\null
-\thispagestyle{empty}  % no page number on this page
-\vfill
-\centerline{\LARGE Lab 1: Lab Introduction}
-\vspace{0.3in}
-\centerline{First Partner and Second Partner}
-\centerline{Logic Design Fundamentals (EECE 144), CSU Chico}
-%\centerline{\today}
-\centerline{September 8, 2011}
-\centerline{Kurtis Kredo, Instructor}
-\vspace{5in}
+\centerline{\bf EECE 144}
+\centerline{\bf Fall 2011}
+\centerline{\bf}
+\centerline{\bf Lab Report \#0}
+\centerline{\bf Section 8}
+\centerline{\bf 9/7/2011}
 
 % signature area
+% TODO - how to get more vertical space from \bigstrut?
 \begin{center}
-\begin{tabular}{l l}
-\uline{\hspace{2.5in}} & \uline{\hspace{2.5in}} \\
-Signature (First Partner) & Signature (Second Partner) \\
-& \\
-& \\
-\uline{\hspace{2.5in}} & \uline{\hspace{2.5in}} \\
-Date & Date \\
-\end{tabular}
+\begin{tabularx}{\textwidth}[b]{X X l}
+Submitted by: & & \\
+Signature & Printed Name & Date \\
+\hline
+\multicolumn{1}{|X|}{} & \multicolumn{1}{|l|}{\bigstrut \bf A Student} & \multicolumn{1}{|l|}{\bf Sep 7, 2011} \\
+\hline
+\multicolumn{1}{|X|}{} & \multicolumn{1}{|l|}{\bigstrut \bf B Student} & \multicolumn{1}{|l|}{\bf Sep 7, 2011} \\
+\hline
+\end{tabularx}
 \end{center}
-
-\vfill  % fill up the rest of the page with spaces, shifts content up
-\pagebreak
 % }}}
 
-\thispagestyle{plain}  % turn back on page numbers
+\section{Description/Objectives}
 
-% {{{ Table of Contents
-\tableofcontents
-
-\pagebreak
-% }}}
-
-\section{Objectives}
-
-What is the goal of this lab?
+This “lab assignment” illustrates how to write a lab report, using a quiz study
+session as an example. The objective is to learn to write good lab reports and
+gain some tips on how to study for EECE 144.
 
 \section{Procedure}
 
-What was procedure you used in this lab?
-Describe it in detail so that someone else you repeat
-this procedure to confirm your results.
+We began by collecting our notes and questions together. The collected
+questions were ordered based on interest and student uncertainty.
+For each question, we:
+
+\begin{enumerate}[a.]
+\item Reviewed our class notes and the appropriate textbook sections until
+everyone had a basic understanding of the material.
+\item Quizzed each other by solving the textbook problems that had answers
+provided in the back of the book.
+\item In cases where a member still had uncertainty, we created additional
+problems for group discussion and as solution examples.
+\end{enumerate}
+
+During the study session, one student tried to solve an assigned homework
+problem with the group. The other group members reminded everyone that
+homework assignments must be done individually and to solve them as a group
+would be academic misconduct and lead to unpleasant results.
+
+After resolving all outstanding questions, the group performed a final quiz by
+asking made-up questions on random topics. Once all members felt comfortable
+with the topics, we went home to get plenty of sleep before the quiz.
 
 \section{Observations}
 
-Describe any notable behaviour that was observed.
+We found that meeting as a group to study helped each member learn the course
+material. Each student brought an understanding of certain topics and a
+weakness in other topics. As a group, we had a combined knowledge that no
+individual student possessed.
 \nocite{LOGISIM}
 
-\section{Analysis}
+During the study session, we also learned that creating questions and explaining
+material to other students was an excellent test of understanding. Often we
+thought we knew a subject until we had to explain it to another student.
 
-Analyze the observations.
+%\section{Analysis}
+%
+%Analyze the observations.
 
 \section{Conclusion}
 
-Describe your conclusions from this lab.
-Was it successful?
+Studying in groups supported and improved the understanding of all students
+involved. We feel more confident and better prepared after the study session
+than we did earlier in the semester.
+
+The example lab report also provided welcome guidance on how to gain the most
+from lab and better prepare our lab reports.
 
 % flush all the figures
-\clearpage
+%\clearpage
 
 % References (if needed)
 % If you don't have any references
 % comment out this section.
-\pagebreak
+%\pagebreak
 % for References in table of contents
 \renewcommand*{\refname}{}
 \section{References}
