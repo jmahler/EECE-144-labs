@@ -49,61 +49,52 @@
 %   A copy of the license is included in the file "fdl-1.3.txt".
 %
 
-\documentclass{article}
-%\documentclass[12pt]{article}
+\documentclass[12pt]{article}
 %\documentclass[10pt]{article}
-%\documentclass[english]{IEEEtran}
 
 %\usepackage{mslapa}
 \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{graphicx}
-\usepackage{ulem}       % \uline
-\usepackage{vmargin}    % \setpapersize
+\usepackage{ulem}
+\usepackage{vmargin}
+\usepackage{tabularx}
+\usepackage{sectsty}
+\usepackage{pbox}
+\usepackage{bigstrut}
+\usepackage{enumerate}
 
 \setpapersize{USletter}
+\sectionfont{\normalsize}
 
 \begin{document}
 
+
 % {{{ Cover Page
 
-\null
-\thispagestyle{empty} % no page number on this page
-\vfill
-\centerline{\LARGE Lab 1: Lab Introduction}
-\vspace{0.3in}
-\centerline{Jeremiah M. Mahler and Marvanee Johnson}
-\centerline{Logic Design Fundamentals (EECE 144), CSU Chico}
-%\centerline{\today}
-\centerline{September 7, 2011}
-\centerline{Kurtis Kredo, Instructor}
-\vspace{5in}
+\centerline{\bf EECE 144}
+\centerline{\bf Fall 2011}
+\centerline{\bf}
+\centerline{\bf Lab Report \#1}
+\centerline{\bf Section 3340}
+\centerline{\bf 9/7/2011}
 
 % signature area
+% TODO - how to get more vertical space from \bigstrut?
 \begin{center}
-\begin{tabular}{l l}
-\uline{\hspace{2.5in}} & \uline{\hspace{2.5in}} \\
-Signature (Jeremiah Mahler) & Signature (Marvanee Johnson) \\
-& \\
-& \\
-\uline{\hspace{2.5in}} & \uline{\hspace{2.5in}} \\
-Date & Date \\
-\end{tabular}
+\begin{tabularx}{\textwidth}[b]{X X l}
+Submitted by: & & \\
+Signature & Printed Name & Date \\
+\hline
+\multicolumn{1}{|X|}{} & \multicolumn{1}{|l|}{\bigstrut \bf Jeremiah Mahler} & \multicolumn{1}{|l|}{\bf Sep 7, 2011} \\
+\hline
+\multicolumn{1}{|X|}{} & \multicolumn{1}{|l|}{\bigstrut \bf Marvanee Johnson} & \multicolumn{1}{|l|}{\bf Sep 7, 2011} \\
+\hline
+\end{tabularx}
 \end{center}
-
-\vfill  % fill up the rest of the page with spaces, shifts content up
-\pagebreak
 % }}}
 
-\thispagestyle{plain}  % turn back on page numbers
-
-% {{{ Table of Contents
-\tableofcontents
-
-\pagebreak
-% }}}
-
-\section{Objectives}
+\section{Description/Objectives}
 
 The objective of this lab is to introduce a student to
 the essential lab equipment that will be used in subsequent labs.
@@ -127,7 +118,7 @@ Logisim \cite{LOGISIM} is software that can be used to simulate digital
 circuits.
 To introduce the student to this software they should create a basic circuit
 with a few elements.
-A good example is to add one AND gate and one OR gate.
+A good example is to add one AND gate and one OR gate (see Figure \ref{fig:logisim}).
 Then input pins can be connected to the terminals along with an output pin.
 Then in simulation mode (as opposed to edit mode) the pins can be set hi/low
 and the output behaviour can be verified.
@@ -157,7 +148,7 @@ the higher resoltion meter read 12.4723 volts.
 The simulation of the AND, OR and NOT gates in Logisim behaved as expected
 and followed their truth table values (Figure \ref{fig:gatett}).
 
-\begin{figure}[!hbtp]
+\begin{figure}[!hbt]
 
 \center
 \begin{tabular}{c c c}  % outer alignment table
@@ -216,6 +207,8 @@ A & out \\
 \label{fig:gatett}
 \end{figure}
 
+%\clearpage
+
 \section{Conclusion}
 
 This lab was a success in introducing a student to the basic equipment
@@ -226,9 +219,9 @@ The digitial circuit simulator, Logisim, also worked as expected and the
 truth tables for AND, OR and NOT were confirmed.
 
 % flush all the figures
-\clearpage
+%\clearpage
 
-\pagebreak
+%\pagebreak
 \renewcommand*{\refname}{}
 \section{References}
 %\bibliographystyle{plain}
