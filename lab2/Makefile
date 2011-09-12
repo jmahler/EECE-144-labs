@@ -1,4 +1,6 @@
 
+all: main.pdf
+
 main.dvi: main.tex
 	rubber $<
 

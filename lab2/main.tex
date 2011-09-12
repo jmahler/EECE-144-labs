@@ -77,6 +77,8 @@
 
 \setlength{\parindent}{0in}
 
+\raggedright
+
 \begin{document}
 
 % {{{ Cover Page
@@ -241,7 +243,8 @@ a b + c' &+ abc 	&& \\
 a b + abc &+ c' 	&& \quad \mbox{(Commutative Law)} \\
 a (b + bc) &+ c' 	&& \quad \mbox{(Distributive Law)} \\
 a (b (1 + c)) &+ c' && \quad \mbox{(Distributive Law)} \\
-a b &+ c' 			&& \quad \mbox{($0/1$ Law, $X + 1 = 1$))}
+a (b \cdot 1) &+ c' 		&& \quad \mbox{($0/1$ Law, $X + 1 = 1$)} \\
+a b &+ c' 			&& \quad \mbox{($0/1$ Law, $X \cdot 1 = X$)}
 \end{align*}
 
 \caption{Reduction of $ab + c' + abc$ in to $ab + c'$}
