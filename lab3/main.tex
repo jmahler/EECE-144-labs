@@ -106,9 +106,21 @@ Signature & Printed Name & Date \\
 
 \section{Description/Objectives}
 
+The objective of this lab is to implement a logic function
+using actual hardware.
+The basic interfacing circuits using switches and outputs
+using LEDs are also introduced.
+
 \section{Procedure}
 
-(Equations \ref{eq:fn1})
+Equation \ref{eq:fn1} will be used as the logic function for this lab.
+The first step is to build a truth table definition (Figure \ref{fig:out1}).
+The next step is to implement the logic function using Logisim \cite{LOGISIM}.
+This will help as a guide for connecting hardware and can also be used
+to verify the truth table in Figure \ref{fig:out1}.
+The chips being used only have two inputs so the gates in Logisim should
+also use only two inputs.
+
 \nocite{LOGISIM}
 
 \begin{align}
@@ -154,7 +166,25 @@ $a$ & $b$ & $c$ & z (out) \\
 \label{fig:logisim1}
 \end{figure}
 
+%\clearpage
 
+The inputs to the chips will be in the form of mechanical switches.
+If the switch is connected from the source voltage (5 volts) to the
+chip it will read the high value correctly but it will not read low
+correctly because the open circuit is not equivalent to low. 
+To remedy this issue a pull down resistor is used to connect the
+pin at the chip to ground.
+A 1k resistor works well for this, larger values such as 10k may not
+work properly.
+
+The outputs from the chips will be used to drive a LED.
+For the LEDs used in this lab the current should be approximately
+20 mA if we assume that the diode behaves as a short with no voltage drop.
+Using Ohm's Law ($V = i \cdot R$) and a source voltage of 5 volts
+this results in a resistor of 250 ohms.
+Select the resistor nearest to this value or larger.
+
+% TODO - hardware circuit
 
 \section{Observations}
 
