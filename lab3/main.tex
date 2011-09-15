@@ -63,6 +63,7 @@
 \usepackage{pbox}
 \usepackage{bigstrut}
 \usepackage{enumerate}
+\usepackage{parskip}  % add spaces between paragraphs
 
 %\usepackage{cleveref}
 
@@ -106,26 +107,31 @@ Signature & Printed Name & Date \\
 
 \section{Description/Objectives}
 
-The objective of this lab is to implement a logic function
-using actual hardware.
-The basic interfacing circuits using switches and outputs
-using LEDs are also introduced.
+The objective of this lab is to build a working logic function
+in hardware along with basic interfacing circuits using switches
+and LEDs.
 
 \section{Procedure}
 
-Equation \ref{eq:fn1} will be used as the logic function for this lab.
-The first step is to build a truth table definition (Figure \ref{fig:out1}).
-The next step is to implement the logic function using Logisim \cite{LOGISIM}.
-This will help as a guide for connecting hardware and can also be used
-to verify the truth table in Figure \ref{fig:out1}.
-The chips being used only have two inputs so the gates in Logisim should
-also use only two inputs.
-
-\nocite{LOGISIM}
+\label{sec:plan}
+Equation \ref{eq:fn1} will be used as the logic function to be implemented in
+this lab.
 
 \begin{align}
 & a c + a' b + a b' c' \label{eq:fn1}
 \end{align}
+
+Before wiring the hardware it is a good idea to devise a plan using
+a truth table and a diagram of the necessary gates.
+The diagram built in Logisim should look similar to Figure \ref{fig:logisim1}.
+The truth table (Figure \ref{fig:out1}) can be built by manually calculating
+the output of the function or by using the Logisim simulation.
+It is recommended to use both of these methods as this serves as a sanity
+check for your calculations.
+This check does not guarantee that they are both correct but it is unlikely that
+they would both be wrong in exactly the same way.
+\nocite{roth2009fundamentals}
+\nocite{LOGISIM}
 
 \begin{figure}[!hbt]
 
@@ -166,31 +172,90 @@ $a$ & $b$ & $c$ & z (out) \\
 \label{fig:logisim1}
 \end{figure}
 
-%\clearpage
+\clearpage
 
-The inputs to the chips will be in the form of mechanical switches.
-If the switch is connected from the source voltage (5 volts) to the
-chip it will read the high value correctly but it will not read low
-correctly because the open circuit is not equivalent to low. 
-To remedy this issue a pull down resistor is used to connect the
-pin at the chip to ground.
-A 1k resistor works well for this, larger values such as 10k may not
-work properly.
+\subsection{Interface Circuitry}
 
-The outputs from the chips will be used to drive a LED.
+After the plan has been devised the next step is to implement the
+function in hardware.
+
+% input circuit
+In order to provide hi/lo signals in to the 7400 series chips
+\cite{wiki:7400_series} it is necessary to provide approximately 5 volts for
+hi and 0 volts for low.
+This can be done using a mechanical switch with one terminal connected
+to a 5 volt source.
+But when the switch opens to indicate 0 volts this open circuit condition
+is indeterminate and is not guaranteed to be near 0 volts.
+To remedy this situation a pull down resistor is used as show in Figure \ref{fig:pulldown}.
+Any suitably large value for the resistor should work but it was found
+that 1k worked whereas 10k did not.
+
+\begin{figure}[!hbtp]
+\center
+\includegraphics[scale=0.6]{pulldown}
+\caption{Pull down resistor circuit.}
+\label{fig:pulldown}
+\end{figure}
+
+% output circuit
+To signal the final result of the logic circuit a LED will
+be connected to the final output pin.
 For the LEDs used in this lab the current should be approximately
-20 mA if we assume that the diode behaves as a short with no voltage drop.
-Using Ohm's Law ($V = i \cdot R$) and a source voltage of 5 volts
-this results in a resistor of 250 ohms.
-Select the resistor nearest to this value or larger.
+20 mA.
+If we assume that the diode behaves as a short circuit with
+no voltage drop we can use Ohm's Law ($V = i \cdot R$) to calculate a
+resistor value of 250 ohms ($5 / .020 = 250$).
+Select a resistor with a value greater than or equal to this.
+Also be aware that LEDs are directional and they will not illuminate
+if they are backwards.
 
-% TODO - hardware circuit
+\subsection{Wiring}
+
+The task of wiring the chips is tedious but it is nearly impossible
+without a plan (see Section \ref{sec:plan}).
+
+To wire the chips it is necessary to have all the pertinent data sheets.
+These describe the function of each pin, the voltage characteristics and
+the orientation of the pins.
+The general procedure is as follows:
+\begin{itemize}
+	\item Choose a subset of the circuit to implement from Figure \ref{fig:logisim1}.
+	\item Refer to the data sheet for the pin identification of the chip involved.
+	\item Connect wires.
+	\item Repeat until all subsets of the circuit have been implemented.
+\end{itemize}
+
+As an example, the diagram (Figure \ref{fig:logisim1}) showed that
+each pin was connected to the NOT gates first.
+So the first step was to connect each of the switches which represented
+the inputs $a$, $b$, and $c$ to the corresponding pins on the 7404 NOT gate chip.
+
+% testing
+To test the output of a pin on a chip a voltmeter can be used.
+The hi/low outputs will not be exactly 5 volts but they should be close
+\footnote{Refer to the data sheet for the chip being used for the exact
+threshold values.}.
+
+%\clearpage
 
 \section{Observations}
 
-%\clearpage
+The output of the logic function should agree with the truth table
+(Figure \ref{fig:out1}).
 
+The voltage level outputs are unlikely to be exactly 0 volts and
+5 volts for low and high.
+During this lab it was found that a low
+of 0.16 volts and a high of 4.68 volts was normal.
+
+\clearpage
 \section{Conclusion}
+
+The construction of this logic circuit confirmed the expected behavior
+as predicted through manual calculation and simulation.
+The benefit of simulation and calculation was also shown by the
+fact that wiring chips is tedious and time consuming.
 
 % flush all the figures
 %\clearpage
