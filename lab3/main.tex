@@ -208,7 +208,7 @@ no voltage drop we can use Ohm's Law ($V = i \cdot R$) to calculate a
 resistor value of 250 ohms ($5 / .020 = 250$).
 Select a resistor with a value greater than or equal to this.
 Also be aware that LEDs are directional and they will not illuminate
-if they are backwards.
+if they are connected backwards.
 
 \subsection{Wiring}
 
@@ -233,7 +233,7 @@ the inputs $a$, $b$, and $c$ to the corresponding pins on the 7404 NOT gate chip
 
 % testing
 To test the output of a pin on a chip a voltmeter can be used.
-The hi/low outputs will not be exactly 5 volts but they should be close
+The hi/low outputs should be near 5  and 0 volts respectively
 \footnote{Refer to the data sheet for the chip being used for the exact
 threshold values.}.
 
@@ -242,12 +242,18 @@ threshold values.}.
 \section{Observations}
 
 The output of the logic function should agree with the truth table
-(Figure \ref{fig:out1}).
+in Figure \ref{fig:out1}.
 
 The voltage level outputs are unlikely to be exactly 0 volts and
 5 volts for low and high.
 During this lab it was found that a low
 of 0.16 volts and a high of 4.68 volts was normal.
+
+Some experimentation was necessary to find a working value for the
+pull down resistor (\ref{fig:pulldown}).
+By measuring the voltage output it was found that the 10k resistor
+kept the voltage above 3 volts when switched low which was inadequate.
+With the 1k resistor switching was normal.
 
 \clearpage
 \section{Conclusion}
