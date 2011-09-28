@@ -80,7 +80,7 @@ The minterm canonical SOP form for the logic function used in this
 experiment is given in Equation \ref{eq:minsop}.
 The equivalent maxterm canonical POS form is given in Equation \ref{eq:maxpos}.
 Both functions produce an equivalent truth table as given in Figure \ref{fig:tt1}.
-\nocite{roth2009fundamentals}
+%\nocite{roth2009fundamentals}
 
 \begin{align}
 f(x, y) &= \sum m(0, 2) \label{eq:minsop} \\
@@ -137,15 +137,12 @@ that of swapping the AND gates with OR gates and vice versa.
 
 \subsection{Wiring}
 
-The task of wiring the chips is tedious but it is nearly impossible
-without a plan (see Section \ref{sec:plan}).
-
 To wire the chips it is necessary to have all the pertinent data sheets.
 These describe the function of each pin, the voltage characteristics and
 the orientation of the pins.
 The general procedure is as follows:
 \begin{itemize}
-	\item Choose a subset of the circuit to implement from Figure \ref{fig:logisim1}.
+	\item Choose a subset of the circuit to implement from Figure \ref{fig:minsoplog} or Figure \ref{fig:maxposlog}..
 	\item Refer to the data sheet for the pin identification of the chip involved.
 	\item Connect wires.
 	\item Repeat until all subsets of the circuit have been implemented.
@@ -182,12 +179,12 @@ form and maxterm POS form by implementing the function in hardware.
 %\clearpage
 
 %\pagebreak
-\renewcommand*{\refname}{\vspace{-8mm}}
-\section{References}
+%\renewcommand*{\refname}{\vspace{-8mm}}
+%\section{References}
 %\bibliographystyle{plain}
 %\bibliographystyle{mslapa}
-\bibliographystyle{ieeetr}
-\bibliography{../references}
+%\bibliographystyle{ieeetr}
+%\bibliography{../references}
 
 % Appendix (if needed)
 
