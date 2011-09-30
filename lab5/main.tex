@@ -56,7 +56,7 @@
 % signature area
 \begin{center}
 \begin{tabularx}{\textwidth}[b]{X l l}
-Submitted by: & & \\
+Submitted by: Jeremiah Mahler & & \\
 Signature & Printed Name & Date \\
 \hline
 \multicolumn{1}{|X|}{} & \multicolumn{1}{|l|}{\bigstrut \bf Jeremiah Mahler} & \multicolumn{1}{|l|}{\bf Oct 5, 2011} \\
@@ -89,9 +89,10 @@ The truth table produced from Equation \ref{eq:cansop}
 is shown in Figure \ref{fig:tt}.
 And the Karnaugh Map produced from the truth table
 is shown in Figure \ref{fig:karnmap}.
-Using the groupings produced by the Karnaugh Map results in
-the simplifed Equation \ref{eq:simp}.
-Finally the circuit definition is show in Figure \ref{fig:circuit}.
+Using the groupings produced by the Karnaugh Map in Figure \ref{fig:karnmap}
+results in the simplified form in Equation \ref{eq:simp}.
+The implementation of the logic function using gates is
+shown in Figure \ref{fig:circuit}.
 
 \begin{align}
 f(a, b, c) &= c' + a'b \label{eq:simp}
@@ -123,29 +124,47 @@ Index&$a$&$b$&$c$&$f$\\
 \begin{figure}[!hbt]
 \begin{center}
 
-\begin{tabular}{cc|c|c|}
-a & b & \multicolumn{2}{c}{c} \\
-& & \multicolumn{1}{c}{0} & \multicolumn{0}{c}{1} \\
-\cline{3-4}
-0 & 0  & \cellcolor{red!40}1 & 0 \\
-\cline{3-4}
-0 & 1  & \cellcolor{red!40!blue!40}1 & \cellcolor{blue!40}1 \\
-\cline{3-4}
-1 & 1  & \cellcolor{red!40}1 & 0 \\
-\cline{3-4}
-1 & 0  & \cellcolor{red!40}1 & 0 \\
-\cline{3-4}
+\begin{tabular}{c c c}
+
+%\begin{tabular}{cc|c|c|}
+%     & \multicolumn{1}{c}{$c$} & \multicolumn{2}{c}{} \\
+%$ab$ &  \multicolumn{1}{c}{} & \multicolumn{1}{c}{0} & \multicolumn{1}{c}{1} \\
+%	\cline{3-4}
+%	& 00 & \cellcolor{red!40}1 & 0 \\
+%	\cline{3-4}
+%	& 01 & \cellcolor{red!40!blue!40}1 & \cellcolor{blue!40}1 \\
+%	\cline{3-4}
+%	& 11 & \cellcolor{red!40}1 & 0 \\
+%	\cline{3-4}
+%	& 10 & \cellcolor{red!40}1 & 0 \\
+%	\cline{3-4}
+%\end{tabular}
+
+\begin{tabular}[b]{cc|c|c|c|c|}
+     & \multicolumn{1}{c}{$ac$} & \multicolumn{4}{c}{} \\
+$b$ &  \multicolumn{1}{c}{} & \multicolumn{1}{c}{00} & \multicolumn{1}{c}{01} & \multicolumn{1}{c}{11} & \multicolumn{1}{c}{10} \\
+	\cline{3-6}
+	& 0 & \cellcolor{red!40}1 & 0 & 0 & \cellcolor{red!40}1 \\
+	\cline{3-6}
+	& 1 & \cellcolor{red!40!blue!40}1 & \cellcolor{blue!40}1 & 0 & \cellcolor{red!40}1 \\
+	\cline{3-6}
 \end{tabular}
 
-%\karnaughmap{3}{f(a,b,c):}{abc}{10111010}{}
-% This produces a nice looking map but I dont understand the format.
+& &
+
+\karnaughmap{3}{$f(a,b,c)$:}{abc}{10111010}{}
+
+\end{tabular} % outer tabular
 
 \end{center}
-\caption{Karnaugh Map of Equation \ref{eq:cansop}.
-The largest 4 element grouping is shown in red and the smaller
-two element grouping is shown in blue.}
+\caption{
+Two equivalent Karnaugh Map representations of Equation \ref{eq:cansop}.
+The first shows the explicit values of $a$, $b$, and $c$ along with
+red and blue coloring to denote the groupings.
+The second is a Veitch \cite{Veitch:1952:CMS:609784.609801} diagram.}
 \label{fig:karnmap}
 \end{figure}
+
 
 \begin{figure}[!hbtp]
 \center
@@ -154,38 +173,30 @@ two element grouping is shown in blue.}
 \label{fig:circuit}
 \end{figure}
 
-
-%The design of these logic functions implemented with gates is shown
-%in Figure \ref{fig:minsoplog} and \ref{fig:maxposlog}.
-%Interestingly, the only change made between the two diagrams is
-%that of swapping the AND gates with OR gates and vice versa.
-
 \clearpage
 
 \section{Observations}
 
-%The output of each logic function implemented in hardware agreed
-%with the truth table.
-%To switch between the minterm POS to maxterm SOP it was only
-%necessary to swap the 7432 OR gate with the 7408 AND gate.
-%This is possible because the layouts are identical for each chip.
+The output of each logic function implemented in hardware
+(Figure \ref{fig:circuit}) agreed with the expected values
+of the truth table (Figure \ref{fig:tt}).
 
-\clearpage
 \section{Conclusion}
 
-%This lab was a success in showing the equivalence of minterm SOP
-%form and maxterm POS form by implementing the function in hardware.
+This lab was a success in showing that simplification of a
+logic function using a Karnaugh map produces produces a
+equivalent function which can be implemented in hardware.
 
 % flush all the figures
 %\clearpage
 
 %\pagebreak
-%\renewcommand*{\refname}{\vspace{-8mm}}
-%\section{References}
+\renewcommand*{\refname}{\vspace{-8mm}}
+\section{References}
 %\bibliographystyle{plain}
 %\bibliographystyle{mslapa}
-%\bibliographystyle{ieeetr}
-%\bibliography{../references}
+\bibliographystyle{ieeetr}
+\bibliography{../references}
 
 % Appendix (if needed)
 
