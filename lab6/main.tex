@@ -71,7 +71,7 @@ Signature & Printed Name & Date \\
 
 The objective of this lab is to simplify a function in to
 two equivalent forms, one using NAND's and the other using NOR's,
-then implement this in hardware.
+then implement these in hardware.
 
 \section{Procedure}
 \label{sec:procedure}
@@ -81,6 +81,8 @@ First, using the given logic function, it is simplified
 using Karnaugh Maps.
 Then this simplified function is manipulated in to two
 forms with one using only NAND's and the other using only NOR's.
+Then these functions are implemented in hardware (74HC00, 74HC02 ICs)
+and the results are verified against the truth table.
 
 The canonical SOP form of the equation used in this lab is
 given in Equation \ref{eq:cansop}.
@@ -92,7 +94,7 @@ f(a, b, c, d) &= \sum m(0, 2, 8, 10, 12, 13, 14, 15) \label{eq:cansop} \\
 \end{align}
 
 The truth table produced from Equation \ref{eq:cansop}
-is shown in Figure \ref{fig:tt}.
+is shown in Table \ref{tab:tt}.
 And the Karnaugh Map produced from the truth table
 is shown in Figure \ref{fig:karnmap}.
 Using the groupings produced by the Karnaugh Map
@@ -102,7 +104,7 @@ results in the simplified form in Equation \ref{eq:simp}.
 f(a, b, c, d) &= ab + b'd' \label{eq:simp}
 \end{align}
 
-\begin{figure}[!hbt]
+\begin{table}[!hbt]
 \begin{center}
 
 \begin{tabular}{lr}
@@ -131,8 +133,8 @@ Index&$a$&$b$&$c$&$d$&$f$\\
 \end{center}
 
 \caption{Truth table of Equation \ref{eq:cansop}.}
-\label{fig:tt}
-\end{figure}
+\label{tab:tt}
+\end{table}
 
 \begin{figure}[!hbt]
 \begin{center}
@@ -176,7 +178,9 @@ Index&$a$&$b$&$c$&$d$&$f$\\
 \end{figure}
 
 Using the simplified logic function (Equation \ref{eq:simp}) this
-can be converted to use only NAND (not and) operations.
+can be converted to use only NAND (not and) gates instead of AND and OR
+\footnote{NOT gates are not included in this analysis because it
+is assumed that the inputs are available in their inverted or non-inverted form.}.
 Equation \ref{eq:nand} shows this result.
 An implementation of this function using gates is shown in Figure \ref{fig:nand}.
 
@@ -194,7 +198,7 @@ f(a,b,c,d) &= a b + b'd' &\mbox{(original equation)} \notag \\
 \end{figure}
 
 Again using the simplified logic function (Equation \ref{eq:simp}) this
-can be converted to use only NOR (not or) operations.
+can be converted to use only NOR (not or) gates instead of AND and OR.
 Equation \ref{eq:nor} shows this result.
 An implementation of this function using gates is shown in Figure \ref{fig:nor}.
 
@@ -217,7 +221,7 @@ f(a,b,c,d) &= a b + b'd' &\mbox{(original equation)} \notag \\
 
 The output of each logic function implemented in hardware
 (Figure \ref{fig:nand}, Figure \ref{fig:nor}) agreed with the expected values
-of the truth table (Figure \ref{fig:tt}).
+of the truth table (Table \ref{tab:tt}).
 
 \section{Conclusion}
 
