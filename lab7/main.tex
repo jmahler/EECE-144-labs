@@ -184,7 +184,7 @@ and 1 input to the NOT gate.
 \begin{figure}[htb]
 \center
 \includegraphics[scale=0.5]{Jminsop-01}
-\caption{Circuit diagram of the minimal SOP solution of $J$}
+\caption{Circuit diagram of the minimal SOP solution of $J$.}
 \label{fig:Jminsop-01}
 \end{figure}
 
@@ -196,7 +196,7 @@ and 4 inputs to the NOT gates.
 \begin{figure}[!htb]
 \center
 \includegraphics[scale=0.5]{Kminsop-01}
-\caption{Circuit diagram of the minimal SOP solution of $K$}
+\caption{Circuit diagram of the minimal SOP solution of $K$.}
 \label{fig:Kminsop-01}
 \end{figure}
 
@@ -205,7 +205,7 @@ same.
 For $K$ the circuit must be modified as shown in Figure \ref{fig:Kminsop-02}.
 There are 4 NOT gates, 6 AND gates and 2 OR gates.
 And there are 4 inputs to the NOT gates, 12 inputs to the AND gates,
-and 3 inputs to the OR gates.
+and 4 inputs to the OR gates.
 
 \begin{figure}[!htb]
 \center
@@ -241,7 +241,7 @@ And Equation \ref{eq:JKjoint} is the resulting expressions.
 
 And the circuit diagram of the jointly optimized solution is given
 in Figure \ref{fig:JKjointcircuit}.
-There are 4 NOT gates, 7 AND gates and 4 OR gates.
+It can be seen that there are 4 NOT gates, 7 AND gates and 4 OR gates.
 There are 4 NOT gate inputs, 14 AND gate inputs, and 8 OR gate inputs.
 
 \begin{figure}[!htb]
@@ -251,11 +251,96 @@ There are 4 NOT gate inputs, 14 AND gate inputs, and 8 OR gate inputs.
 \label{fig:JKjointcircuit}
 \end{figure}
 
+Finally this jointly optimized solution (Figure \ref{fig:JKjointcircuit}
+can be implemented in hardware using the 74HC04(NOT), 74HC08(AND),
+and 74HC32(OR) gates.
+Be sure to use pull down resistors (1k ohms works well) on the switch inputs
+and to limit the current through the LED outputs with a 290 ohm resistor.
+And if the LED outputs do not work try reversing their direction (remember
+they behave like diodes).
+
 \clearpage
 
 \section{Observations}
 
+The jointly optimized solution (Figure \ref{fig:JKjointcircuit}) of functions
+$J$ and $K$ reproduced the expected truth table values (Table \ref{tbl:tt}).
+
+The jointly optimized solution did reduce the number of gates
+albeit slightly.
+It can be seen from Table \ref{tbl:counts} that implementing
+$J$ and $K$ independently resulted in 16 gates and 27 inputs.
+Implementing these jointly resulted in 15 gates and 26 inputs,
+a savings of 1 gate and 1 input.
+
+\begin{table}[!htb]
+\center
+\begin{tabular}{cc}
+
+\begin{tabular}{lll}
+\multicolumn{3}{c}{\bf{$J$ by itself}} \\
+gate type & \# gates & \# inputs\\
+\hline
+AND & 2 & 4\\
+OR  & 1 & 2\\
+NOT & 1 & 1 \\
+\hline
+\bf{TOTAL} & 4 & 7
+\end{tabular}
+
+&
+
+\begin{tabular}{lll}
+\multicolumn{3}{c}{\bf{$J$ and $K$ independently}} \\
+gate type & \# gates & \# inputs\\
+\hline
+AND & 8 & 16 \\
+OR  & 3 & 6  \\
+NOT & 5 & 5  \\
+\hline
+\bf{TOTAL} & 16 & 27
+\end{tabular}
+\\
+\\
+
+\begin{tabular}{lll}
+\multicolumn{3}{c}{\bf{$K$ by itself, 2 input gates}} \\
+gate type & \# gates & \# inputs\\
+\hline
+AND & 6 & 12 \\
+OR  & 2 & 4  \\
+NOT & 4 & 4  \\
+\hline
+\bf{TOTAL} & 12 & 20
+\end{tabular}
+
+&
+
+\begin{tabular}{lll}
+\multicolumn{3}{c}{\bf{$J$ and $K$ jointly}} \\
+gate type & \# gates & \# inputs\\
+\hline
+AND & 7 & 14 \\
+OR  & 4 & 8  \\
+NOT & 4 & 4  \\
+\hline
+\bf{TOTAL} & 15 & 26
+\end{tabular}
+
+\end{tabular} % outer formatting table
+
+\caption{Metrics of gate and input counts for various configurations
+of $J$ and $K$.}
+\label{tbl:counts}
+\end{table}
+
+
 \section{Conclusion}
+
+The lab was a success in developing a optimized hardware implementation
+of two distinct logic functions.
+The jointly optimized solution resulted in a slight, but still significant,
+reduction in the number of gates and gate inputs.
 
 % flush all the figures
 %\clearpage
