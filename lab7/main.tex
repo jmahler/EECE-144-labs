@@ -17,7 +17,7 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{ulem}
-%\usepackage{vmargin}
+\usepackage{vmargin}
 \usepackage{tabularx}
 \usepackage{sectsty}
 \usepackage{pbox}
@@ -68,92 +68,190 @@ Signature & Printed Name & Date \\
 
 \section{Description/Objectives}
 
-\section{Procedure}
-\label{sec:procedure}
+% description
+The objective of this lab is to develop an optimized hardware
+implementation of two distinct logic functions
+(Equation \ref{eq:Jcsop} and \ref{eq:Kcsop}).
+First the logic functions will be analyzed/optimized individually.
+Then they will be combined in to a jointly optimized solution.
+The jointly optimized solution will then be implemented in hardware
+using 74HC04(NOT), 74HC08(AND), and 74HC32(OR) gates.
+
+% (objective)
+Once completed it should be possible to confirm that the jointly
+optimized solution behaves identically to the singly optimized solution.
 
 \begin{align}
 J(w, x, y, z) &= \sum m(1,3,9,11,12,13,14,15) \label{eq:Jcsop} \\
 K(w, x, y, z) &= \sum m(0,1,3,12,14) \label{eq:Kcsop}
 \end{align}
 
-\begin{table}[!hbt]
+\section{Procedure}
+\label{sec:procedure}
+
+\begin{samepage}
+The procedure consists of several steps:
+\begin{enumerate}
+	\item Find the minimal SOP expression of $J$ and $K$ separately
+	using Karnaugh maps.
+	\item Calculate the number of gates and number of gate inputs required
+	to implement these functions using gates with any number of inputs.
+	\item Calculate the number of gates and number of gate inputs required
+	to implement these functions using only two input gates.
+	\item Find a jointly optimized solution of $J$ and $K$ which minimizes
+	the number of gates using Karnaugh maps.
+	\item Calculate the number of gates and number of gate inputs required
+	to implement this function using only two input gates.
+	\item Implement the jointly optimized function in hardware and verify
+	it against a truth table of the original functions (Table \ref{tbl:tt}).
+\end{enumerate}
+\end{samepage}
+
+\begin{table}[htb]
 \begin{center}
-
 \begin{tabular}{lr}
-  \begin{tabular}[t]{r|cccc|c}
-Index&$w$&$x$&$y$&$z$&$J$\\
-\hline
-0  &0&0&0&0 &0\\
-1  &0&0&0&1 &1\\
-2  &0&0&1&0 &0\\
-3  &0&0&1&1 &1\\
-4  &0&1&0&0 &0\\
-5  &0&1&0&1 &0\\
-6  &0&1&1&0 &0\\
-7  &0&1&1&1 &0\\
-8  &1&0&0&0 &0\\
-9  &1&0&0&1 &1\\
-10 &1&0&1&0 &0\\
-11 &1&0&1&1 &1\\
-12 &1&1&0&0 &1\\
-13 &1&1&0&1 &1\\
-14 &1&1&1&0 &1\\
-15 &1&1&1&1 &1\\
-
+  \begin{tabular}[t]{r|cccc|c|c}
+  Index&$w$&$x$&$y$&$z$&$J$&$K$\\
+  \hline
+  0  &0&0&0&0 &0 &1\\
+  1  &0&0&0&1 &1 &1\\
+  2  &0&0&1&0 &0 &0\\
+  3  &0&0&1&1 &1 &1\\
+  4  &0&1&0&0 &0 &0\\
+  5  &0&1&0&1 &0 &0\\
+  6  &0&1&1&0 &0 &0\\
+  7  &0&1&1&1 &0 &0\\
+  8  &1&0&0&0 &0 &0\\
+  9  &1&0&0&1 &1 &0\\
+  10 &1&0&1&0 &0 &0\\
+  11 &1&0&1&1 &1 &0\\
+  12 &1&1&0&0 &1 &1\\
+  13 &1&1&0&1 &1 &0\\
+  14 &1&1&1&0 &1 &1\\
+  15 &1&1&1&1 &1 &0\\
   \end{tabular}
 \end{tabular}
 \end{center}
-
-\caption{Truth table of function $J$ (Equation \ref{eq:Jcsop}).}
-\label{tab:tt}
+\caption{Truth table of functions $J$ and $K$.}
+\label{tbl:tt}
 \end{table}
 
-\begin{table}[!hbt]
-\begin{center}
-\begin{tabular}{lr}
-  \begin{tabular}[t]{r|cccc|c}
-Index&$w$&$x$&$y$&$z$&$K$\\
-\hline
-0  &0&0&0&0 &1\\
-1  &0&0&0&1 &1\\
-2  &0&0&1&0 &0\\
-3  &0&0&1&1 &1\\
-4  &0&1&0&0 &0\\
-5  &0&1&0&1 &0\\
-6  &0&1&1&0 &0\\
-7  &0&1&1&1 &0\\
-8  &1&0&0&0 &0\\
-9  &1&0&0&1 &0\\
-10 &1&0&1&0 &0\\
-11 &1&0&1&1 &0\\
-12 &1&1&0&0 &1\\
-13 &1&1&0&1 &0\\
-14 &1&1&1&0 &1\\
-15 &1&1&1&1 &0\\
+\begin{samepage}
+The first step is to find a minimal SOP expression for $J$.
+Using the Karnaugh map for $J$ (Figure \ref{fig:Jmap})
+results in two prime implicants as shown in Equation \ref{eq:Jsop}.
 
-  \end{tabular}
-\end{tabular}
-\end{center}
-\caption{Truth table of function $K$ (Equation \ref{eq:Kcsop}).}
-\label{tab:tt}
-\end{table}
+\begin{equation}
+	J = w x + x' z  \label{eq:Jsop}
+\end{equation}
+\end{samepage}
 
 \begin{figure}[!hbt]
 \begin{center}
 \karnaughmap{4}{$J(w,x,y,z)$:}{wxyz}{0101000001011111}{}
 \end{center}
-\caption{Karnaugh Map of function J (Equation \ref{eq:Jcsop}).}
+\caption{Karnaugh map of function $J$ (Equation \ref{eq:Jcsop}).}
 \label{fig:Jmap}
 \end{figure}
+
+Similarly, finding a minimal SOP expression for $K$ using its
+Karnaugh map (Figure \ref{fig:Kmap}) results in three prime implicants
+as shown in Equation \ref{eq:Ksop}.
 
 \begin{figure}[!hbt]
 \begin{center}
 \karnaughmap{4}{$K(w,x,y,z)$:}{wxyz}{1101000000001010}{}
 \end{center}
-\caption{Karnaugh Map of function K (Equation \ref{eq:Kcsop}).}
+\caption{Karnaugh map of function $K$ (Equation \ref{eq:Kcsop}).}
 \label{fig:Kmap}
 \end{figure}
 
+\begin{equation}
+	K = w'x'y' + w'x'z + wxz'  \label{eq:Ksop}
+\end{equation}
+
+A gifted mind of electronics can probably deduce the number of
+gates and gate inputs from the expressions alone.
+But here we appeal to the not so brilliant of us by using
+circuit diagrams to clearly elucidate the metrics we
+are seeking.
+
+Referring to the circuit for $J$ in Figure \ref{fig:Jminsop-01} we
+can see that there are 2 AND gates, 1 OR gate, and 1 NOT gate.
+And there are 4 inputs to the AND gates, 2 inputs to the OR gate,
+and 1 input to the NOT gate.
+
+\begin{figure}[htb]
+\center
+\includegraphics[scale=0.5]{Jminsop-01}
+\caption{Circuit diagram of the minimal SOP solution of $J$}
+\label{fig:Jminsop-01}
+\end{figure}
+
+Referring to the circuit for $K$ in Figure \ref{fig:Kminsop-01} we
+can see that there are 3 AND gates, 1 OR gate and 4 NOT gates.
+And there are 9 inputs to the AND gates, 3 inputs to the OR gate,
+and 4 inputs to the NOT gates.
+
+\begin{figure}[!htb]
+\center
+\includegraphics[scale=0.5]{Kminsop-01}
+\caption{Circuit diagram of the minimal SOP solution of $K$}
+\label{fig:Kminsop-01}
+\end{figure}
+
+When limited to two gates the previous solution for $J$ is the
+same.
+For $K$ the circuit must be modified as shown in Figure \ref{fig:Kminsop-02}.
+There are 4 NOT gates, 6 AND gates and 2 OR gates.
+And there are 4 inputs to the NOT gates, 12 inputs to the AND gates,
+and 3 inputs to the OR gates.
+
+\begin{figure}[!htb]
+\center
+\includegraphics[scale=0.5]{Kminsop-02}
+\caption{Circuit diagram of the minimal SOP solution of $K$ when limited to two input gates.}
+\label{fig:Kminsop-02}
+\end{figure}
+
+\clearpage
+
+Jointly optimizing both $J$ and $K$ together is somewhat more complex than
+either individually.
+The general strategy is to find essential prime implicants and then to find
+implicants which are common to both functions.
+
+Figure \ref{fig:JKjointkmap} shows the implicants in a Karnaugh map
+of a jointly optimized solution.
+And Equation \ref{eq:JKjoint} is the resulting expressions.
+
+\begin{align}
+	J &= w'x'z + wxz' + wz  \notag \\
+	K &= w'x'z + wxz' + w'x'y'  \label{eq:JKjoint}
+\end{align}
+
+\begin{figure}[!htb]
+\center
+%\karnaughmap{4}{$J(w,x,y,z)$:}{wxyz}{0101000001011111}{}
+%\karnaughmap{4}{$K(w,x,y,z)$:}{wxyz}{1101000000001010}{}
+\includegraphics[scale=0.60]{JKkmap-01}
+\caption{Jointly optimized Karnaugh maps for $J$ and $K$.}
+\label{fig:JKjointkmap}
+\end{figure}
+
+And the circuit diagram of the jointly optimized solution is given
+in Figure \ref{fig:JKjointcircuit}.
+There are 4 NOT gates, 7 AND gates and 4 OR gates.
+There are 4 NOT gate inputs, 14 AND gate inputs, and 8 OR gate inputs.
+
+\begin{figure}[!htb]
+\center
+\includegraphics[scale=0.5]{JKjoint-01}
+\caption{Circuit diagram of the jointly optimized solution of $J$ and $K$ when limited to two input gates.}
+\label{fig:JKjointcircuit}
+\end{figure}
+
+\clearpage
 
 \section{Observations}
 
