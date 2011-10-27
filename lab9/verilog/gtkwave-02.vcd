@@ -1,0 +1,150 @@
+$date
+	Wed Oct 26 19:14:16 2011
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module test $end
+$var wire 1 ! c_out $end
+$var wire 1 " s0_out $end
+$var wire 1 # s1_out $end
+$var reg 1 $ a0_in $end
+$var reg 1 % a1_in $end
+$var reg 1 & b0_in $end
+$var reg 1 ' b1_in $end
+$scope module adder1 $end
+$var wire 1 ( a0 $end
+$var wire 1 ) a1 $end
+$var wire 1 * b0 $end
+$var wire 1 + b1 $end
+$var wire 1 ! c $end
+$var wire 1 " s0 $end
+$var wire 1 # s1 $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+x+
+x*
+x)
+x(
+x'
+x&
+x%
+x$
+x#
+x"
+x!
+$end
+#1
+0#
+0!
+0"
+0%
+0)
+0$
+0(
+0'
+0+
+0&
+0*
+#3
+1"
+1&
+1*
+#5
+1#
+0"
+1'
+1+
+0&
+0*
+#7
+1"
+1&
+1*
+#9
+0#
+1$
+1(
+0'
+0+
+0&
+0*
+#11
+1#
+0"
+1&
+1*
+#13
+1"
+1'
+1+
+0&
+0*
+#15
+1!
+0#
+0"
+1&
+1*
+#17
+1#
+0!
+1%
+1)
+0$
+0(
+0'
+0+
+0&
+0*
+#19
+1"
+1&
+1*
+#21
+0#
+1!
+0"
+1'
+1+
+0&
+0*
+#23
+1"
+1&
+1*
+#25
+1#
+0!
+1$
+1(
+0'
+0+
+0&
+0*
+#27
+0#
+1!
+0"
+1&
+1*
+#29
+0#
+1!
+1"
+1'
+1+
+0&
+0*
+#31
+1#
+0"
+1&
+1*
+#32
