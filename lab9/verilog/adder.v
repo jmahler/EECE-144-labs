@@ -46,6 +46,7 @@ endmodule
 
 module test;
     reg a1_in, a0_in, b1_in, b0_in;
+	integer i;
     wire c_out, s1_out, s0_out;
 
      // Dont think of modules as being "called" as in C. 
@@ -62,72 +63,10 @@ module test;
         $display("a1 a0 b1 b0 | c s1 s0");
         $display("---------------------");
 
-        #1 {a1_in, a0_in, b1_in, b0_in} = 4'b0000;
-        // Be sure to add a delay before $display otherwise it will
-        // display before the assignment (as if they were at the same time).
-        #1
-        $display("%b  %b  %b  %b  | %b  %b  %b",
-                a1_in, a0_in, b1_in, b0_in, c_out, s1_out, s0_out);
-        // remaining output entries are similiar, update values, $display, ...
-        #1 {a1_in, a0_in, b1_in, b0_in} = 4'b0001;
-        #1
-        $display("%b  %b  %b  %b  | %b  %b  %b",
-                a1_in, a0_in, b1_in, b0_in, c_out, s1_out, s0_out);
-        #1 {a1_in, a0_in, b1_in, b0_in} = 4'b0010;
-        #1
-        $display("%b  %b  %b  %b  | %b  %b  %b",
-                a1_in, a0_in, b1_in, b0_in, c_out, s1_out, s0_out);
-        #1 {a1_in, a0_in, b1_in, b0_in} = 4'b0011;
-        #1
-        $display("%b  %b  %b  %b  | %b  %b  %b",
-                a1_in, a0_in, b1_in, b0_in, c_out, s1_out, s0_out);
-        #1 {a1_in, a0_in, b1_in, b0_in} = 4'b0100;
-        #1
-        $display("%b  %b  %b  %b  | %b  %b  %b",
-                a1_in, a0_in, b1_in, b0_in, c_out, s1_out, s0_out);
-        #1 {a1_in, a0_in, b1_in, b0_in} = 4'b0101;
-        #1
-        $display("%b  %b  %b  %b  | %b  %b  %b",
-                a1_in, a0_in, b1_in, b0_in, c_out, s1_out, s0_out);
-        #1 {a1_in, a0_in, b1_in, b0_in} = 4'b0110;
-        #1
-        $display("%b  %b  %b  %b  | %b  %b  %b",
-                a1_in, a0_in, b1_in, b0_in, c_out, s1_out, s0_out);
-        #1 {a1_in, a0_in, b1_in, b0_in} = 4'b0111;
-        #1
-        $display("%b  %b  %b  %b  | %b  %b  %b",
-                a1_in, a0_in, b1_in, b0_in, c_out, s1_out, s0_out);
-        #1 {a1_in, a0_in, b1_in, b0_in} = 4'b1000;
-        #1
-        $display("%b  %b  %b  %b  | %b  %b  %b",
-                a1_in, a0_in, b1_in, b0_in, c_out, s1_out, s0_out);
-        #1 {a1_in, a0_in, b1_in, b0_in} = 4'b1001;
-        #1
-        $display("%b  %b  %b  %b  | %b  %b  %b",
-                a1_in, a0_in, b1_in, b0_in, c_out, s1_out, s0_out);
-        #1 {a1_in, a0_in, b1_in, b0_in} = 4'b1010;
-        #1
-        $display("%b  %b  %b  %b  | %b  %b  %b",
-                a1_in, a0_in, b1_in, b0_in, c_out, s1_out, s0_out);
-        #1 {a1_in, a0_in, b1_in, b0_in} = 4'b1011;
-        #1
-        $display("%b  %b  %b  %b  | %b  %b  %b",
-                a1_in, a0_in, b1_in, b0_in, c_out, s1_out, s0_out);
-        #1 {a1_in, a0_in, b1_in, b0_in} = 4'b1100;
-        #1
-        $display("%b  %b  %b  %b  | %b  %b  %b",
-                a1_in, a0_in, b1_in, b0_in, c_out, s1_out, s0_out);
-        #1 {a1_in, a0_in, b1_in, b0_in} = 4'b1101;
-        #1
-        $display("%b  %b  %b  %b  | %b  %b  %b",
-                a1_in, a0_in, b1_in, b0_in, c_out, s1_out, s0_out);
-        #1 {a1_in, a0_in, b1_in, b0_in} = 4'b1110;
-        #1
-        $display("%b  %b  %b  %b  | %b  %b  %b",
-            a1_in, a0_in, b1_in, b0_in, c_out, s1_out, s0_out);
-        #1 {a1_in, a0_in, b1_in, b0_in} = 4'b1111;
-        #1
-        $display("%b  %b  %b  %b  | %b  %b  %b",
-            a1_in, a0_in, b1_in, b0_in, c_out, s1_out, s0_out);
-    end
+		for (i = 0; i < 16; i = i + 1) begin
+				#1 {a1_in, a0_in, b1_in, b0_in} = i;
+				#1 $display("%b  %b  %b  %b  | %b  %b  %b",
+                	a1_in, a0_in, b1_in, b0_in, c_out, s1_out, s0_out);
+		end
+	end
 endmodule
