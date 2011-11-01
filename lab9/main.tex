@@ -108,19 +108,19 @@ is added to the two bit number \{ $B_1$, $B_0$ \} resulting in the two bit numbe
 \label{sec:procedure}
 
 To construct the two bit adder in Verilog requires several steps.
-First, three functions corresponding to each output must be
-calculated using the truth table (Table \ref{tbl:tt}).
+First, three functions corresponding to each output (Table \ref{tbl:tt})
+must be found and minimized using Karnaugh Maps.
 Then these functions must be defined in the Verilog format.
 Then the Verilog file must be compiled and run and its outputs
 verified against the desired outputs from the truth table.
-Additionally, GTKWave can be used to graphically visualize all the
+Additionally, GTKWave is used to graphically visualize all the
 state changes over time.
 
 The first function to be found is for the output $C$.
 The Karnaugh Map for this function is shown in Figure \ref{fig:kmc}.
 Grouping the 1s together results in SOP Equation \ref{eq:c}.
 
-\begin{figure}[hbp]
+\begin{figure}
 \begin{center}
 \karnaughmap{4}{$C(a, b, c, d)$:}{abcd}{0000000100110111}{}
 \end{center}
@@ -138,7 +138,7 @@ Next the output of the function $S_1$ is found.
 Its Karnaugh Map is shown in Figure \ref{fig:kms1}
 Grouping the 1s together results in SOP Equation \ref{eq:s1}.
 
-\begin{figure}[hbp]
+\begin{figure}
 \begin{center}
 \karnaughmap{4}{$S_1(a, b, c, d)$:}{abcd}{0011011011001001}{}
 \end{center}
@@ -160,10 +160,9 @@ S_1 = A_1 B_1' B_0'
 Finally the output of the function $S_0$ is found.
 Its Karnaugh Map is shown in Figure \ref{fig:kms0}
 Grouping the 1s together results in SOP Equation \ref{eq:s0sop}.
-This equation can be simplified to the XOR of $A_0$ and $B_0$
-as shown in Equation \ref{eq:s0}.
+And this equation can be simplified using XOR as shown in Equation \ref{eq:s0}.
 
-\begin{figure}[hbp]
+\begin{figure}
 \begin{center}
 \karnaughmap{4}{$S_0(a, b, c, d)$:}{abcd}{0101101001011010}{}
 \end{center}
@@ -180,22 +179,24 @@ S_0 &= A_0 B_0' + A_0' B_0 \label{eq:s0sop} \\
 
 Now that the three functions corresponding to the three outputs have
 been found this can be programmed in Verilog.
-In Verilog there is more than one way to construct a function.
-In this instance we are using data flow modeling with operators and
+In Verilog there is more than one way to construct a module.
+Here we are using \emph{data flow modeling} with operators and
 primitives.
 This form is very verbose and specifies each step explicitly
 (see Appendix \ref{sec:source} for the full source code).
-In contrast with data flow modeling is behavioral modeling which
-provides higher level construct such as if, case and looping.
+In contrast, if \emph{data flow modeling} was used, it would
+describe the operation at a higher (behavioral) level by using
+\verb+if+, \verb+case+, loops and other operations.
 
 Once the source code is entered it must be compiled.
-In this case we are using Icarus Verilog \cite{VERILOG} under Linux.
+The example below shows how this was done using Icarus Verilog \cite{VERILOG}
+under Linux.
 
 \begin{verbatim}
-jeri@bishop verilog$ ls
+shell$ ls
 adder.v
-jeri@bishop verilog$ iverilog adder.v
-jeri@bishop verilog$ ls
+shell$ iverilog adder.v
+shell$ ls
 adder.v  a.out
 \end{verbatim}
 
@@ -203,7 +204,7 @@ The file 'a.out' is the executable produced during compilation.
 Next the executable is run.
 
 \begin{verbatim}
-jeri@bishop verilog$ ./a.out 
+shell$ ./a.out 
 VCD info: dumpfile gtkwave-02.vcd opened for output.
 a1 a0 b1 b0 | c s1 s0
 ---------------------
@@ -223,20 +224,20 @@ a1 a0 b1 b0 | c s1 s0
 1  1  0  1  | 1  0  0
 1  1  1  0  | 1  0  1
 1  1  1  1  | 1  1  0
-jeri@bishop verilog$ ls
+shell$ ls
 adder.v  a.out  gtkwave-02.vcd
 \end{verbatim}
 
 In this case the \verb+$display+ statements were arranged so that
 a truth table was output.
 This can be used to verify that the outputs agree with the
-truth table of the desired values.
+truth table of the desired values (Table \ref{tbl:tt}).
 Also notice that the file \verb+gtkwave-02.vcd+ has been created.
 This file can be used with GTKWave to produce a display of the wave
 forms over time.
 
 \begin{verbatim}
-jeri@bishop verilog$ gtkwave gtkwave-02.vcd
+shell$ gtkwave gtkwave-02.vcd
 \end{verbatim}
 
 % }}}
@@ -248,14 +249,6 @@ The output values produced by Verilog agreed with those in the
 truth table of desired values.
 And GTKWave correctly displayed the bit values over time
 as shown in Figure \ref{fig:wave}
-
-%\begin{figure}
-%\center
-%{\footnotesize
-%\verbatiminput{verilog/adder-output.txt}
-%}
-%\caption{Output of verilog simulation (see Appendix \ref{sec:source} for source).}
-%\end{figure}
 
 \begin{figure}
 \center
