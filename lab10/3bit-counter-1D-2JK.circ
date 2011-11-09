@@ -29,8 +29,8 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
   </options>
   <mappings>
     <tool lib="6" map="Button2" name="Menu Tool"/>
-    <tool lib="6" map="Button3" name="Menu Tool"/>
     <tool lib="6" map="Ctrl Button1" name="Menu Tool"/>
+    <tool lib="6" map="Button3" name="Menu Tool"/>
   </mappings>
   <toolbar>
     <tool lib="6" name="Poke Tool"/>
@@ -59,43 +59,74 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <a name="clabel" val=""/>
     <a name="clabelup" val="east"/>
     <a name="clabelfont" val="SansSerif plain 12"/>
+    <wire from="(200,150)" to="(200,250)"/>
     <wire from="(220,170)" to="(240,170)"/>
+    <wire from="(610,160)" to="(620,160)"/>
+    <wire from="(500,100)" to="(510,100)"/>
+    <wire from="(590,170)" to="(620,170)"/>
+    <wire from="(680,100)" to="(680,150)"/>
     <wire from="(660,150)" to="(680,150)"/>
     <wire from="(570,140)" to="(590,140)"/>
     <wire from="(280,170)" to="(300,170)"/>
-    <wire from="(390,250)" to="(610,250)"/>
-    <wire from="(390,160)" to="(400,160)"/>
-    <wire from="(370,150)" to="(400,150)"/>
-    <wire from="(680,100)" to="(690,100)"/>
-    <wire from="(610,160)" to="(610,250)"/>
-    <wire from="(280,150)" to="(320,150)"/>
-    <wire from="(320,100)" to="(350,100)"/>
+    <wire from="(390,160)" to="(390,250)"/>
     <wire from="(590,140)" to="(590,150)"/>
+    <wire from="(390,250)" to="(610,250)"/>
     <wire from="(300,170)" to="(300,200)"/>
+    <wire from="(390,160)" to="(400,160)"/>
+    <wire from="(500,100)" to="(500,150)"/>
+    <wire from="(440,150)" to="(500,150)"/>
+    <wire from="(220,200)" to="(300,200)"/>
     <wire from="(370,150)" to="(370,170)"/>
+    <wire from="(200,250)" to="(390,250)"/>
+    <wire from="(370,150)" to="(400,150)"/>
+    <wire from="(590,150)" to="(590,170)"/>
+    <wire from="(680,100)" to="(690,100)"/>
+    <wire from="(220,170)" to="(220,200)"/>
+    <wire from="(500,150)" to="(540,150)"/>
+    <wire from="(610,160)" to="(610,250)"/>
+    <wire from="(340,130)" to="(540,130)"/>
     <wire from="(320,150)" to="(340,150)"/>
+    <wire from="(370,170)" to="(400,170)"/>
+    <wire from="(340,130)" to="(340,150)"/>
+    <wire from="(140,250)" to="(200,250)"/>
+    <wire from="(280,150)" to="(320,150)"/>
     <wire from="(590,150)" to="(620,150)"/>
+    <wire from="(320,100)" to="(350,100)"/>
     <wire from="(320,100)" to="(320,150)"/>
     <wire from="(340,150)" to="(370,150)"/>
     <wire from="(200,150)" to="(240,150)"/>
-    <wire from="(200,150)" to="(200,250)"/>
-    <wire from="(500,100)" to="(510,100)"/>
-    <wire from="(390,160)" to="(390,250)"/>
-    <wire from="(500,100)" to="(500,150)"/>
-    <wire from="(220,200)" to="(300,200)"/>
-    <wire from="(590,150)" to="(590,170)"/>
-    <wire from="(220,170)" to="(220,200)"/>
-    <wire from="(500,150)" to="(540,150)"/>
-    <wire from="(370,170)" to="(400,170)"/>
-    <wire from="(340,130)" to="(340,150)"/>
-    <wire from="(610,160)" to="(620,160)"/>
-    <wire from="(590,170)" to="(620,170)"/>
-    <wire from="(680,100)" to="(680,150)"/>
-    <wire from="(440,150)" to="(500,150)"/>
-    <wire from="(200,250)" to="(390,250)"/>
-    <wire from="(340,130)" to="(540,130)"/>
-    <wire from="(50,250)" to="(200,250)"/>
-    <comp lib="6" loc="(41,276)" name="Text">
+    <comp lib="1" loc="(570,140)" name="AND Gate">
+      <a name="size" val="30"/>
+      <a name="inputs" val="2"/>
+    </comp>
+    <comp lib="6" loc="(519,80)" name="Text">
+      <a name="text" val="Z1"/>
+    </comp>
+    <comp lib="0" loc="(350,100)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="4" loc="(280,150)" name="D Flip-Flop"/>
+    <comp lib="4" loc="(440,150)" name="J-K Flip-Flop"/>
+    <comp lib="6" loc="(699,82)" name="Text">
+      <a name="text" val="Z2"/>
+    </comp>
+    <comp lib="0" loc="(690,100)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="0" loc="(140,250)" name="Pin">
+      <a name="tristate" val="false"/>
+    </comp>
+    <comp lib="6" loc="(606,292)" name="Text">
+      <a name="text" val="Z0 is the least significant bit"/>
+    </comp>
+    <comp lib="6" loc="(361,79)" name="Text">
+      <a name="text" val="Z0"/>
+    </comp>
+    <comp lib="6" loc="(124,284)" name="Text">
       <a name="text" val="CLK"/>
     </comp>
     <comp lib="0" loc="(510,100)" name="Pin">
@@ -103,37 +134,6 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="output" val="true"/>
       <a name="labelloc" val="east"/>
     </comp>
-    <comp lib="0" loc="(350,100)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="6" loc="(361,79)" name="Text">
-      <a name="text" val="Z0"/>
-    </comp>
-    <comp lib="4" loc="(280,150)" name="D Flip-Flop"/>
-    <comp lib="4" loc="(440,150)" name="J-K Flip-Flop"/>
-    <comp lib="0" loc="(50,250)" name="Pin">
-      <a name="tristate" val="false"/>
-    </comp>
-    <comp lib="6" loc="(519,80)" name="Text">
-      <a name="text" val="Z1"/>
-    </comp>
-    <comp lib="6" loc="(606,292)" name="Text">
-      <a name="text" val="Z0 is the least significant bit"/>
-    </comp>
     <comp lib="4" loc="(660,150)" name="J-K Flip-Flop"/>
-    <comp lib="1" loc="(570,140)" name="AND Gate">
-      <a name="size" val="30"/>
-      <a name="inputs" val="2"/>
-    </comp>
-    <comp lib="0" loc="(690,100)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="6" loc="(699,82)" name="Text">
-      <a name="text" val="Z2"/>
-    </comp>
   </circuit>
 </project>
