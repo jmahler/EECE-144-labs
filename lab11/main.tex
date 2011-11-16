@@ -68,7 +68,7 @@ Signature & Printed Name & Date \\
 
 The objective of this lab is to design a three bit binary counter
 that iterates over the following non-sequential sequence
-in ascending from top to bottom when $X = 0$ and in
+in ascending order from top to bottom when $X = 0$ and in
 descending order when $X = 1$.
 The design must use one JK, one T, and one D flip-flop.
 
@@ -91,8 +91,8 @@ The design must use one JK, one T, and one D flip-flop.
 \section{Procedure}
 \label{sec:procedure}
 
-To implement this counter three flip flops will be used.
-Any type of flip flop can be used in any order but in this
+To implement this counter one flip flop is used for each bit.
+Any type of flip flop can be used for any bit but in this
 specific implementation we will use a JK flip-flop for the
 most significant bit followed by a T and a D.
 
@@ -100,7 +100,7 @@ The first step is to build a state table which describes all
 the required counter states along with the flip-flop inputs
 necessary to produce the desired outputs as shown in Table \ref{tbl:st}. 
 From this table the mapping from the inputs
-($Q_2$, $Q_1$, $Q_0$) to gate inputs ($J_2$, $K_2$, $T_1$, etc) can be determined.
+($Q_2$, $Q_1$, $Q_0$) to gate inputs ($J_2$, $K_2$, $T_1$, $D_0$) can be determined.
 
 \begin{table}
 \center
@@ -134,11 +134,9 @@ The "don't care" values are denoted by an x.}
 \subsection{bit $Q_2$ using JK flip-flop}
 
 The Karnaugh Maps for bit $Q_2$ are shown in Figure \ref{fig:kmapQ2}.
-From this table we can see that $J_2$ and $K_2$ are disjoint so we
-can build a single function for them both.
-Grouping ones to form implicants results in the SOP equation
-\footnote{The slash(/) used here is meant to indicate "either or"
-and should not be confused with division.}
+From this table it can be seen that $J_2$ and $K_2$ are disjoint so
+they can be merged in to a single function that represents them both.
+This results in the SOP equation shown below.
 \begin{align*}
 J_2/K_2 &= X' Q_1 + X' Q_0 + Q_2 Q_1 Q_0' + Q_2' Q_0 + X Q_1'
 \end{align*}
@@ -167,7 +165,7 @@ to a single table ($J_2/K_2$).
 \subsection{bit $Q_1$ using T flip-flop}
 
 The Karnaugh Map for bit $Q_1$ is shown in Figure \ref{fig:kmapQ1}.
-Grouping ones to form implicants results in the SOP equation
+This results in the SOP equation shown below.
 \begin{align*}
 T_1 &= X' Q_1' Q_0' + X' Q_1 Q_0 + X Q_2 Q_0 + X Q_2' Q_0'
 \end{align*}
@@ -185,7 +183,7 @@ the inputs ($Q_2$, $Q_1$, $Q_2$, $X$) to the input of the T flip-flop $T_1$.}
 \subsection{bit $Q_0$ using D flip-flop}
 
 The Karnaugh Map for bit $Q_0$ is shown in Figure \ref{fig:kmapQ0}.
-Grouping ones to form implicants results in the SOP equation
+This results in the SOP equation shown below.
 \begin{align*}
 D_0 &= Q_2 Q_1' + X' Q_2 Q_0' + X Q_1' + X' Q_2' Q_1 Q_0
 \end{align*}
@@ -203,7 +201,7 @@ the inputs ($Q_2$, $Q_1$, $Q_2$, $X$) to the input of the D flip-flop $D_0$.}
 \subsection{circuit construction}
 
 After all the equations for each bit has been found these
-be combined together to produce a complete solution that works
+can be combined together to produce a complete solution that works
 for all bits and implements the 3-bit, non-sequential counter.
 In this case Logisim\cite{LOGISIM} will be used to build and simulate the circuit.
 
@@ -211,16 +209,15 @@ This implementation has many interconnections so its construction
 can be quite tedious.
 The resulting circuit is shown in Figure \ref{fig:circ}.
 Every single combination should be verified against the
-state table (Table \ref{tbl:st}) to make every connection is right.
+state table (Table \ref{tbl:st}) to ensure every connection is right.
 
-In the event of an error it is best to methodically find the error rather
-than removing all or some and starting over.
+In the event of an error it is best to methodically diagnose the error
+rather than removing all or some and starting over.
 Starting over does nothing to find the problem and it is possible that
-the problem could be built again if there is an error in the design.
+the problem could be built again if the design is wrong.
 A good strategy for finding problems is to try and isolate the problem.
 For example, if the bit $Q_2$ is wrong it would make sense to check
 the JK flip-flop since that is the bit it controls.
-It most likely would be a waste of time to examine the other flip-flops.
 
 \begin{figure}
 \center
@@ -237,24 +234,31 @@ It most likely would be a waste of time to examine the other flip-flops.
 \section{Observations}
 
 \samepage
-It is possible to build a 3-bit non-sequential counter using a JK,
-T, and D flip-flops.
 The counter, when simulated in Logisim, reproduced the desired sequence
 in both the up and down directions.
 
 Due to the tedious nature of this design several errors did
-occur while building the circuit which had to be solved.
+occur while building the circuit which had to be fixed.
 The strategy of trying to isolate the problem to a specific bit
-or part of a function worked well.
+or part of the circuit worked well.
+
+The complexity of this design suggests that there may be a simpler
+solution.
+One possible avenue for optimization is the input gates to the flip-flops.
+Perhaps these can be aggregated together to use fewer gates.
+Another possibility is to try different gate types in different positions.
+Perhaps a JK would require fewer gates as bit 1 instead of bit 2 for example.
 
 % }}}
 
 % {{{ Conclusion
 \section{Conclusion}
 
-This lab was a success in designing a three bit non-sequential counter.
-When simulated in Logisim it reproduced all the desired values without
-any problems.
+This lab was a success in designing and implementing a
+three bit non-sequential up/down counter in Logisim
+using three flip-flops of different types.
+It is indeed possible to build a counter with three different
+types of flip-flops along with several additional gates.
 
 % }}}
 
