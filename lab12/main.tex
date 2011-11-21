@@ -209,14 +209,14 @@ Once all the code has been defined it can be compiled and run.
 The test bench is given in Appendix\ref{sec:test}.
 
 To compile the source code using Icarus Verilog\cite{VERILOG}
-under Linux the following commands can be run.
+under Linux the following command can be run.
 
 \begin{verbatim}
 iverilog test.v
 \end{verbatim}
 
 This will produce a filed named 'a.out'.
-Under Linux this can be executed directly as shown below.
+Under Linux this can be executed directly.
 
 \begin{verbatim}
 ./a.out
@@ -230,17 +230,17 @@ vvp a.out
 \end{verbatim}
 
 Because the \verb+$dumpfile+ and \verb+$dumpvars+ have been
-added to the test bench it will produce output suitable
-for GTKWave\cite{GTKWAVE}.
-The output file should have the extension '.vcd'.
-This file can then be run using GTKWave as shown below.
+added to the test bench (Appendix \ref{sec:test})
+it will produce an output file suitable for GTKWave\cite{GTKWAVE}.
+The file should have the extension '.vcd' and can
+be run as shown below.
 
 \begin{verbatim}
 gtkwave output.vcd
 \end{verbatim}
 
-And from within GTKWave the various variables can be selected
-to be displayed.
+And from within GTKWave the different variables can be selected
+and displayed.
 
 % }}}
 
