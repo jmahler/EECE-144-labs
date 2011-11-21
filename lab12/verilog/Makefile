@@ -1,4 +1,4 @@
 
-a.out: 3bcounter.v
+a.out: test.v
 	iverilog $<
 

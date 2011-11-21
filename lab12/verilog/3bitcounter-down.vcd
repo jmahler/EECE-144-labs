@@ -1,0 +1,210 @@
+$date
+	Sun Nov 20 18:39:42 2011
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module test $end
+$var wire 1 ! q0 $end
+$var wire 1 " q1 $end
+$var wire 1 # q2 $end
+$var reg 1 $ clk $end
+$var reg 1 % reset $end
+$var reg 1 & x $end
+$scope module tbudc $end
+$var wire 1 ' clk $end
+$var wire 1 ( d0 $end
+$var wire 1 ) jk2 $end
+$var wire 1 ! q0 $end
+$var wire 1 * q0_n $end
+$var wire 1 " q1 $end
+$var wire 1 + q1_n $end
+$var wire 1 # q2 $end
+$var wire 1 , q2_n $end
+$var wire 1 - reset $end
+$var wire 1 . t1 $end
+$var wire 1 / x $end
+$scope module q0ff $end
+$var wire 1 ' clk $end
+$var wire 1 ( d $end
+$var wire 1 * q_n $end
+$var wire 1 - reset $end
+$var reg 1 0 q $end
+$upscope $end
+$scope module q1ff $end
+$var wire 1 ' clk $end
+$var wire 1 + q_n $end
+$var wire 1 - reset $end
+$var wire 1 . t $end
+$var reg 1 1 q $end
+$upscope $end
+$scope module q2ff $end
+$var wire 1 ' clk $end
+$var wire 1 ) j $end
+$var wire 1 ) k $end
+$var wire 1 , q_n $end
+$var wire 1 - reset $end
+$var reg 1 2 q $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+x2
+x1
+x0
+x/
+x.
+x-
+x,
+x+
+x*
+x)
+x(
+x'
+x&
+x%
+x$
+x#
+x"
+x!
+$end
+#3
+1%
+1-
+#4
+1*
+1+
+1,
+00
+0!
+01
+0"
+02
+0#
+1$
+1'
+#5
+0$
+0'
+#6
+1$
+1'
+#7
+1.
+1(
+1)
+0$
+0'
+1&
+1/
+0%
+0-
+#8
+0(
+0)
+0*
+0+
+0,
+10
+1!
+11
+1"
+12
+1#
+1$
+1'
+#9
+0$
+0'
+#10
+1(
+1)
+0.
+1+
+1*
+01
+0"
+00
+0!
+1$
+1'
+#11
+0$
+0'
+#12
+0*
+1,
+10
+1!
+02
+0#
+1$
+1'
+#13
+0$
+0'
+#14
+1.
+0,
+12
+1#
+1$
+1'
+#15
+0$
+0'
+#16
+0(
+0.
+0+
+1,
+11
+1"
+02
+0#
+1$
+1'
+#17
+0$
+0'
+#18
+0.
+1)
+0,
+1*
+12
+1#
+00
+0!
+1$
+1'
+#19
+0$
+0'
+#20
+0)
+1.
+1,
+02
+0#
+1$
+1'
+#21
+0$
+0'
+#22
+1(
+1)
+1+
+01
+0"
+1$
+1'
+#23
+0$
+0'
