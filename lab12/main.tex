@@ -108,13 +108,13 @@ The always block is triggered only on the positive edge as shown
 on line 8.
 The operation of the reset is shown on line 9.
 When the reset bit is set it clears the output (\verb+q+).
-When flip-flops are implemented it is recommended to use the non-block
+When flip-flops are implemented it is recommended to use the non-blocking
 assignment (\verb+<=+) as was done here shown on lines 10 and 13.
 In order to achieve the inverted output (\verb+q_n+) it was necessary
 to use the continuous assignment operation \verb+assign+ as is shown
 on line 17.
 This in effect makes the value \verb+q_n+ always equal to
-of \verb+~q+.
+\verb+~q+.
 It was also necessary to make \verb+q_n+ a wire and not a reg so that
 the continuous assignment would work as shown on line 7.
 
@@ -152,7 +152,7 @@ to increase efficiency as shown on line 13 and 15.
 % {{{ JK flip-flop in Verilog
 \subsection{JK flip-flop in Verilog}
 
-The implementation for the JK flip-flop is given in Listing \ref{lst:tff}.
+The implementation for the JK flip-flop is given in Listing \ref{lst:jkff}.
 In general it is similar in design to the D flip-flop from Section \ref{sec:dff}
 and the T flip-flop from Section \ref{sec:tff} except that it has more
 cases to test.
@@ -174,7 +174,8 @@ Once all the flip flops have been built they can be connected
 together to construct the 3 bit counter.
 
 The functions which define each bit were determined in
-Lab 11\cite{mahler144lab11} are given in Equation \ref{eq:d0},
+Lab 11\cite{mahler144lab11}.
+They are reproduced here in Equation \ref{eq:d0},
 \ref{eq:t1}, and \ref{eq:jk2}.
 
 \begin{align}
@@ -187,9 +188,11 @@ The implementation for the 3 bit counter is given in Listing \ref{lst:3bit}.
 Lines 1-3 show that it includes the flip flops that were defined previously.
 Lines 16-18 shown the use of the previously defined flip flops.
 Conceptually this is like soldering these chips to the circuit board.
-On lines 21-28 the continuous assignment operation is used to connect
-all the wires together and to define the output of each flip-flop.
-These define the equations that were given previously.
+On lines 21-28 the continuous assignment operation (\verb+assign+)
+is used to connect all the wires together and to define the output of
+each flip-flop.
+And these define the equations that were given previously
+(Equation \ref{eq:d0}, \ref{eq:t1}, and \ref{eq:jk2}).
 
 \lstinputlisting[
 	language=Verilog,
