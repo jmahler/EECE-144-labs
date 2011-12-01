@@ -1,0 +1,13 @@
+digraph LT {
+	A -> A [label=" I,R"];
+
+	A -> B [label=" L"];
+	B -> C [label=" L"];	
+	C -> D [label=" L"];	
+
+	A -> D [label=" H"]
+
+	B -> A [label=" I,R,H"];	
+	C -> A [label=" I,R,H"]
+	D -> A [label=" I,L,R,H"];	
+}

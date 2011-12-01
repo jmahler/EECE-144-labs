@@ -53,5 +53,9 @@ module taillights (input clk, L, R, H, output reg [2:0] TL, TR);
 				TR <= 3'b000;
 			end
 		end
+		else begin
+			TL <= 3'b000;
+			TR <= 3'b000;
+		end
 	end
 endmodule

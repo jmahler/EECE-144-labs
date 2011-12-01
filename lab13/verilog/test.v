@@ -1,9 +1,9 @@
 /*
- * Test bench for 3 bit counter.
+ * Test bench tail lights.
  *
  * To compile this file run:
  *
- *   iverilog this_file.v
+ *   iverilog test.v
  *
  * Run the executable:
  *
@@ -13,17 +13,17 @@
  *
  * Because $dumpfile and $dumpvars have been
  * added it will generate data for gtkwave
- * in 3bitcounter.vcd.
+ * in gtkwave-output.vcd.
  *
  * This output file can then be shown with Gtkwave.
  *
- *   gtkwave 3bitcounter.vcd
+ *   gtkwave gtkwave-output.vcd
  *
  * And from within Gtkwave you can pick and choose
  * variables to see their waveforms over time.
  *
  *
- * This project was completed as part of lab 12 in the
+ * This project was completed as part of lab 13 in the
  * class EECE-144 taught by Kurtis Kredo II at Chico State
  * during the Fall of 2011.
  *
@@ -36,7 +36,6 @@
 module test;
     reg clk, L, R, H;
     wire [2:0] TL, TR;
-	integer i;
 
 	taillights tl1(.clk(clk), .L(L), .R(R), .H(H), .TL(TL), .TR(TR));
 
@@ -50,49 +49,33 @@ module test;
 		H = 0;
         clk = 0;
 
+		// configure how to run the test
+
 		/*
 		// Left
-		L = 1;
-		R = 0;
-		for (i = 0; i <= 10; i = i + 1) begin
-			#1;
-		end
+		L = 1; R = 0;
 
 		// Right
-		L = 0;
-		R = 1;
-		for (i = 0; i <= 10; i = i + 1) begin
-			#1;
-		end
-
+		#10 L = 0; R = 1;
+		*/
+	   	
+	    /*
 		// Hazard
-		H = 1;
-		for (i = 0; i <= 10; i = i + 1) begin
-			#1;
-		end
+		H = 0;
+		#5 H = 1;
+		// engaging the left or right should not change anything
+		#5 L = 1;
+		#5 L = 0; R=1;
 		*/
 
-		// Left, then change to right in the middle.
-		L = 1;
-		R = 0;
-		for (i = 0; i <= 5; i = i + 1) begin
-			#1;
-		end
-		L = 0;
-		R = 1;
-		for (i = 0; i <= 5; i = i + 1) begin
-			#1;
-		end
+		// back and forth from left to right
+		H = 0;
+		L = 1; R = 0;
+		#4 L = 0; R = 1;
+		#9 L = 1; R = 0;
+		#5 L = 0; R = 1;
 
-        //$monitor("%b    %b  %b  %b  %b", clk, x, q2, q1, q0);
-
-        //#16 $finish;
-        /* Each time unit switches the clock up/down (see below).
-         * We need twice as many here since the flip-flop is triggered
-         * only on the positive edge.
-        */
-
-	   	$finish;
+	   	#2 $finish;
     end
 
     always begin
