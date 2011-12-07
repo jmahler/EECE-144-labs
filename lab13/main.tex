@@ -88,9 +88,9 @@ and then, start the new sequence.  HAZ comes from the hazard switch,
 and when HAZ = 1, all six lights flash on and off in unison.
 HAZ takes precedence if LEFT or RIGHT is also on.
 Assume that a clock signal is available with a frequency equal to the desired
-flashing rate.
-\end{quote}
+flashing rate. \\
 \cite[p. 547, prob. 16.27]{roth2009fundamentals}.
+\end{quote}
 
 % }}}
 
@@ -98,14 +98,23 @@ flashing rate.
 \section{Procedure}
 \label{sec:procedure}
 
-There is more than one way to design this circuit.
 The method used here builds a state diagram and state table
-for one side and then to use this as a general guide in
-which to design the Verilog code.
+for one side and then this is used as a guide to duplicate
+for the opposite side.
+Then it is programmed in Verilog using behavioral modeling.
+With behavioral modeling statements such as \verb+if+ can be
+used which make it similar to a regular programming language such
+as C.
+
+One limitation of using behavioral modeling it is not easily
+translated to gates and flip flops.
+An alternative would be to design this using data flow modeling.
+It would be more difficult to design but it could be translated
+to gates and flip flops more easily.
 
 From Figure \ref{fig:leftstate} and Table \ref{tbl:leftstate},
 which describe the operation of the left turn signal,
-it can be discerned in general how the system will operate.
+it can be seen in general how the system will operate.
 The operation of the right turn signal is similar but with
 the states/values of right and left reversed.
 
@@ -139,11 +148,11 @@ The states of $X$ are all mutually exclusive.}
 
 The source code for the Verilog definition of the tail lights
 is given in Listing \ref{lst:tl}.
-The module is only triggered on the positive edge of the clock (Line 13),
-similar to a flip-flop.
-The first decision level consists of a chain of \verb+if+ \verb+else+
-statements which discriminate among the possible X input values (H, L, R, and
-the catch all state I).
+The module is positive edge triggered similar to a flip-flop
+as shown on Line 13,
+The outer logic consists of a chain of \verb+if+, \verb+else if+,
+statements which decide among the possible X input values (H, L, R, and
+the catch all state I) as shown on Lines 14, 24, 40 and 56.
 For each value the current state of the tail lights (TL, TR) is examined
 and a decision is made as to what state to assign next.
 
@@ -241,6 +250,8 @@ This lab was a complete success in implementing a design for
 old Thunderbird tail lights in Verilog.
 All design requirements were met and the tail lights behaved as
 expected.
+This design did not lend itself to an obvious translation in to
+hardware but this would be a worthwhile addition for a future lab.
 
 % }}}
 
